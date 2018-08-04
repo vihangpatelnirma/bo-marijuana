@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { counties, sourceOfLead, medicalConditions } from './config'
+import { counties, sourceOfLead, medicalConditions, officeLocations } from './config'
 import { validate } from './validation'
 
 class Form extends Component {
@@ -16,6 +16,7 @@ class Form extends Component {
 		this.otherSourceRef = React.createRef()
 		this.sourceRef = React.createRef()
 		this.medConditionRef = React.createRef()
+		this.officeLocationRef = React.createRef()
 	}
 
 	submit(event) {
@@ -32,6 +33,9 @@ class Form extends Component {
 			.join(',')
 		const otherSource = this.otherSourceRef.current.value
 		const medicalCondition = this.medConditionRef.current.value
+		let office = this.officeLocationRef.current.querySelector('[type=radio]:checked')
+
+		office = office ? office.value : ''
 
 		const isValid = validate({
 			name,
@@ -41,7 +45,8 @@ class Form extends Component {
 			otherCounty,
 			source,
 			otherSource,
-			medicalCondition
+			medicalCondition,
+			office
 		})
 
 		this.props.storeData({
@@ -53,7 +58,8 @@ class Form extends Component {
 			otherCounty,
 			source,
 			otherSource,
-			medicalCondition
+			medicalCondition,
+			office
 		})
 	}
 
@@ -110,7 +116,21 @@ class Form extends Component {
 							))}
 						</select>
 					</div>
-					<div />
+					<div>
+						Office Location :
+						{officeLocations.map(loc => (
+							<div key={loc.code} ref={this.officeLocationRef}>
+								<input
+									id={loc.code}
+									name='office-location'
+									type='radio'
+									key={loc.code}
+									value={loc.code}
+								/>
+								<label htmlFor={loc.code}>{loc.name} </label>
+							</div>
+						))}
+					</div>
 				</div>
 				<button type='submit'> NEXT </button>
 			</form>

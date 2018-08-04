@@ -32,3 +32,18 @@ export const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/cal
 export const SCOPES = 'https://www.googleapis.com/auth/calendar'
 
 export const CALENDER_EMAIL = 'vihang.engg@gmail.com' // 'naturalclinicmd@gmail.com'
+
+export const officeLocations = [
+	{
+		name: 'New Port Richey',
+		code: 'NPRY',
+		address: '4766 Rowan Rd, New Port Richey FL 34653',
+		phone: '727-753-8861'
+	},
+	{
+		name: 'Rockledge',
+		code: 'RKLG',
+		address: '577 Barnes Blvd #400, Rockledge, FL 32955',
+		phone: '321-405-2090'
+	}
+]

@@ -131,7 +131,7 @@ class Calender extends Component {
 				timeZone: 'America/Florida'
 			},
 			recurrence: ['RRULE:FREQ=DAILY;COUNT=2'],
-			attendees: [{ email: CALENDER_EMAIL }, { email: email }],
+			attendees: [{ email: CALENDER_EMAIL }, { email }],
 			reminders: {
 				useDefault: false,
 				overrides: [{ method: 'email', minutes: 24 * 60 }, { method: 'popup', minutes: 10 }]
