@@ -1,7 +1,7 @@
 /* global gapi */
 import React, { Component } from 'react'
 
-import { API_KEY, SCOPES, DISCOVERY_DOCS, CLIENT_ID, CALENDER_EMAIL } from './config'
+import { API_KEY, SCOPES, DISCOVERY_DOCS, CLIENT_ID, CALENDER_EMAIL, officeLocations } from './config'
 
 class Calender extends Component {
 	constructor() {
@@ -119,8 +119,8 @@ class Calender extends Component {
 
 		const appointmentTime = new Date(`${date}T${time}`)
 		const event = {
-			summary: '',
-			location: 'Rockledge Office',
+			summary: 'Appointment with Natural Clinic MD',
+			location: officeLocations[office],
 			description: `Natural Clinic MD Appointment on ${appointmentTime.toLocaleDateString()}`,
 			start: {
 				dateTime: appointmentTime.toISOString(),

@@ -1,4 +1,3 @@
-/* global gapi */
 import React, { Component } from 'react'
 
 import templates from './templates'
