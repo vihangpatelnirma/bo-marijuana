@@ -10,7 +10,7 @@ class Form extends Component {
 		this.submit = this.submit.bind(this)
 		this.nameRef = React.createRef()
 		this.emailRef = React.createRef()
-		this.contactRef = React.createRef()
+		this.phoneRef = React.createRef()
 		this.countyRef = React.createRef()
 		this.otherCountyRef = React.createRef()
 		this.otherSourceRef = React.createRef()
@@ -24,15 +24,15 @@ class Form extends Component {
 
 		const name = this.nameRef.current.value
 		const email = this.emailRef.current.value
-		const contact = this.contactRef.current.value
-		const county = this.countyRef.current.value
+		const phone = this.phoneRef.current.value
+		const resident = this.countyRef.current.value
 		const otherCounty = this.otherCountyRef.current.value
 		const source = Array.prototype.slice
 			.call(this.sourceRef.current.querySelectorAll('[type=checkbox]:checked'))
 			.map(item => item.value)
 			.join(',')
 		const otherSource = this.otherSourceRef.current.value
-		const medicalCondition = this.medConditionRef.current.value
+		const condition = this.medConditionRef.current.value
 		let office = this.officeLocationRef.current.querySelector('[type=radio]:checked')
 
 		office = office ? office.value : ''
@@ -40,12 +40,12 @@ class Form extends Component {
 		const isValid = validate({
 			name,
 			email,
-			contact,
-			county,
+			phone,
+			resident,
 			otherCounty,
 			source,
 			otherSource,
-			medicalCondition,
+			condition,
 			office
 		})
 
@@ -53,13 +53,14 @@ class Form extends Component {
 			isValid,
 			name,
 			email,
-			contact,
-			county,
+			phone,
+			resident,
 			otherCounty,
 			source,
 			otherSource,
-			medicalCondition,
-			office
+			condition,
+			office,
+			treatment: 'NA'
 		})
 	}
 
@@ -82,7 +83,7 @@ class Form extends Component {
 					</div>
 					<div className='input-wrapper'>
 						Phone Number :
-						<input type='number' required ref={this.contactRef} />
+						<input type='number' required ref={this.phoneRef} />
 					</div>
 					<div className='input-wrapper'>
 						County :
@@ -116,10 +117,10 @@ class Form extends Component {
 							))}
 						</select>
 					</div>
-					<div>
+					<div ref={this.officeLocationRef}>
 						Office Location :
 						{officeLocations.map(loc => (
-							<div key={loc.code} ref={this.officeLocationRef}>
+							<div key={loc.code}>
 								<input
 									id={loc.code}
 									name='office-location'

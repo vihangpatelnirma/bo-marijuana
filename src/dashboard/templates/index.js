@@ -3,5 +3,6 @@ import _2 from './2'
 
 export default {
 	welcome: _1,
-	thankYouForCalilng: _2
+	thankYouForCalilng: _2,
+	undefined: {}
 }

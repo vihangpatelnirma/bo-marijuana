@@ -8,10 +8,29 @@ class Email extends Component {
 		super()
 
 		this.onTemplateFormatChage = this.onTemplateFormatChage.bind(this)
-
+		this.onSaveAndEmail = this.onSaveAndEmail.bind(this)
 		this.state = {
 			selectedTemplate: null
 		}
+
+		this.titleRef = React.createRef()
+		this.bodyRef = React.createRef()
+	}
+
+	onSaveAndEmail() {
+		if (!this.titleRef.current || !this.bodyRef.current) {
+			return
+		}
+
+		const title = this.titleRef.current.value
+		const body = this.bodyRef.current.value
+
+		if (!title || !body) {
+			alert('Please select mail format')
+			return
+		}
+
+		this.props.onSaveAndEmail({ title, body })
 	}
 
 	onTemplateFormatChage(event) {
@@ -40,6 +59,7 @@ class Email extends Component {
 						<div key={selectedTemplate}>
 							Title :
 							<input
+								ref={this.titleRef}
 								placeHolder='Title'
 								className='email-title'
 								defaultValue={templates[selectedTemplate].title()}
@@ -47,6 +67,7 @@ class Email extends Component {
 							<br />
 							Body :
 							<textarea
+								ref={this.bodyRef}
 								placeHolder='Body'
 								className='email-body'
 								defaultValue={templates[selectedTemplate].body()}
@@ -54,6 +75,7 @@ class Email extends Component {
 						</div>
 					)}
 				</div>
+				<button onClick={this.onSaveAndEmail}>SAVE & EMAIL</button>
 			</div>
 		)
 	}
