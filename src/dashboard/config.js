@@ -31,7 +31,8 @@ export const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/cal
 // included, separated by spaces.
 export const SCOPES = 'https://www.googleapis.com/auth/calendar'
 
-export const CALENDER_EMAIL = 'vihang.engg@gmail.com' // 'naturalclinicmd@gmail.com'
+export const CALENDER_EMAIL =
+	process.env.NODE_ENV === 'production' ? 'naturalclinicmd@gmail.com' : 'vihang.engg@gmail.com' //
 
 export const officeLocations = [
 	{

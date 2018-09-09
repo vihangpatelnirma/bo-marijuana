@@ -33,8 +33,6 @@ class Dashboard extends Component {
 
 		Object.keys(payload).forEach(_ => (!payload[_] ? delete payload[_] : ''))
 
-		console.log
-
 		axios.post('http://bo-marijuana-server.herokuapp.com/save-in-db', payload).then(response => {
 			console.log(response)
 		})
