@@ -26,7 +26,7 @@ class App extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://bo-marijuana-server.herokuapp.com/session/validate', {
+			.post('https://bo-marijuana-server.herokuapp.com/session/validate', {
 				token: getCookie('USER')
 			})
 			.then(response => {

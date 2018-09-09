@@ -15,7 +15,7 @@ class Login extends Component {
 	onSubmit(event) {
 		event.preventDefault()
 		axios
-			.post('http://bo-marijuana-server.herokuapp.com/session/login', {
+			.post('https://bo-marijuana-server.herokuapp.com/session/login', {
 				userName: this.userNameRef.current.value,
 				token: this.tokenRef.current.value
 			})
